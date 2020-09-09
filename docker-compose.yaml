@@ -1,0 +1,7 @@
+version: '3' 
+services: 
+  stripe-mock: 
+    build: . 
+    ports: 
+      - '12111:12111'
+      - '12112:12112'
