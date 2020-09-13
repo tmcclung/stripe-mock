@@ -1,15 +1,16 @@
 # -*- mode: dockerfile -*-
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates go dep git bash
+RUN apk --no-cache add ca-certificates go dep git bash openssh-client
+RUN ls
 COPY . /root/go/src/stripe-mock
 WORKDIR /root/go/src/stripe-mock
-RUN ls
-RUN go env
 RUN go get -u github.com/jteeuwen/go-bindata/...
-RUN /bin/bash -c "pwd && ls"
+ENV PATH $PATH:/root/go/bin
+RUN ls /root/go/src/stripe-mock
 RUN /bin/bash -c "pushd openapi/ && git pull origin master && popd"
 RUN go generate
+RUN ls
 RUN go build
 RUN ls
 RUN dep init
