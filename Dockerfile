@@ -5,6 +5,8 @@ RUN apk --no-cache add ca-certificates go dep
 COPY . /root/go/src/stripe-mock
 WORKDIR /root/go/src/stripe-mock
 RUN go env
+RUN go get -u github.com/jteeuwen/go-bindata/...
+RUN pushd openapi/ && git pull origin master && popd
 RUN go generate
 RUN go build
 RUN ls
