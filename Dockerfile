@@ -1,12 +1,14 @@
 # -*- mode: dockerfile -*-
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates go dep git pushd popd
+RUN apk --no-cache add ca-certificates go dep git bash
 COPY . /root/go/src/stripe-mock
 WORKDIR /root/go/src/stripe-mock
+RUN ls
 RUN go env
 RUN go get -u github.com/jteeuwen/go-bindata/...
-RUN pushd openapi/ && git pull origin master && popd
+RUN /bin/bash -c "pwd && ls"
+RUN /bin/bash -c "pushd openapi/ && git pull origin master && popd"
 RUN go generate
 RUN go build
 RUN ls
