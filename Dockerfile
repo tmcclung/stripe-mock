@@ -1,7 +1,7 @@
 # -*- mode: dockerfile -*-
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates go dep
+RUN apk --no-cache add ca-certificates go dep git
 COPY . /root/go/src/stripe-mock
 WORKDIR /root/go/src/stripe-mock
 RUN go env
