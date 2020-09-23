@@ -189,7 +189,7 @@ git push origin --tags
 [openapi]: https://github.com/stripe/openapi
 [releases]: https://github.com/stripe/stripe-mock/releases
 
-change to rebuild 2
+change to rebuild 3
 
 <!--
 # vim: set tw=79:
